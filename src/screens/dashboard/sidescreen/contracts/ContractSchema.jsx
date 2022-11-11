@@ -27,6 +27,10 @@ const ContractSchema = Yup.object().shape({
     powerPerPanel: Yup
         .number()
         .min(0),
+    billingAccount: Yup
+        .string()
+        .required(ERRORS.ERROR_REQUIRED)
+        .matches(/^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/gm, 'Invalid bank account')
 })
 
 export default ContractSchema

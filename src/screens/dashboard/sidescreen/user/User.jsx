@@ -24,7 +24,6 @@ const User = () => {
             getContracts(user)
             .then(contracts => {
               setContracts(contracts)
-              console.log(contracts);
             })
             .catch(err => (console.log(err)))
           })
@@ -36,7 +35,7 @@ const User = () => {
         <div>
             <h1>Bienvenido {user.firstName}</h1>
         </div>
-        <div>
+        <div className='contract-container-container'>
           {contracts.map((contract) => {
             return (
               <Link to={""} className="contract-container" key={contract.id}>
@@ -56,6 +55,9 @@ const User = () => {
             )
           })
           }
+        </div>
+        <div>
+          
         </div>
       </div>
     );

@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    margin-right: 10px;
     text-decoration: none;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
     transition: .2s ease-in-out;
@@ -25,4 +26,5 @@
 .contract-container-container {
     display: flex;
     flex-wrap: wrap;
+    
 }

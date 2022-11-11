@@ -8,6 +8,7 @@ import { getCurrentUser } from '../../../../services/UserService';
 import { getContract, getContracts } from '../../../../services/ContractService';
 import { ProgressBar } from 'react-loader-spinner';
 import { getTickets } from '../../../../services/TicketService';
+import SoldChart from '../../../../components/dashboard/SoldChart/SoldChart';
 
 const Dashboard = () => {
   const toMonthName= (monthNumber) => {
@@ -139,12 +140,13 @@ const Dashboard = () => {
         {powerSoldData[0].length ?
           <div className='second-row'>
             <div className='chart-container'>
-              <DashboardChart
+              <SoldChart
                 seriesName="Power Sold"
                 data={powerSoldData}
                 xName={month}
                 chartType="area"
                 contractSelected={contractSelected}
+                width="500px"
                 height="300px"
               />
             </div>

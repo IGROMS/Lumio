@@ -1,6 +1,7 @@
 .contract-container {
   height: 100%;
   margin-left: 20px;
+  padding-bottom: 26px;
   h2 {
     margin: 20px 0 10px 0;
   }
@@ -14,7 +15,7 @@
     padding-top: 0;
     
     .details {
-      padding: 10px;
+      padding: 20px;
       background-color: white;
       border-radius: 6px;
 
@@ -25,7 +26,15 @@
     .billing {
       background-color: white;
       border-radius: 6px;
-
+      margin-top: 20px;
+      padding: 20px;
+      h3{
+        margin-top: 0;
+      }
+      .name {
+        font-size: 1em;
+        font-weight: 500;
+      }
       p {
         margin-bottom: 0;
       } 
@@ -33,7 +42,7 @@
   }
 
   .bills {
-    padding: 10px;
+    padding: 20px;
     width: 30%;
     background-color: white;
     margin-left: 30px;
@@ -41,6 +50,24 @@
 
     h3 {
       margin-top: 0;
+    }
+
+    .bill-card {
+      display: flex;
+      justify-content: space-between;
+      margin:  4px;
+      padding: 0  10px;
+      border-bottom: 1px solid rgb(205, 205, 205);
+      .left {
+
+      }
+      .right {
+        display: flex;
+        align-items: center;
+        p{
+          margin-right: 10px;
+        }
+      }
     }
   }
 }

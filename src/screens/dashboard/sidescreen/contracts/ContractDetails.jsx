@@ -4,6 +4,9 @@ import { ProgressBar } from 'react-loader-spinner';
 import { getBills } from '../../../../services/BillService';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { MdAssignmentReturned } from 'react-icons/md';
+
+
 
 const ContractDetails = ({contract}) => {
 
@@ -13,6 +16,15 @@ const ContractDetails = ({contract}) => {
 
   const sortFunction = (a , b) => {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  }
+
+  const toMonthName= (monthNumber) => {
+    const date = new Date();
+    date.setMonth(monthNumber - 1);
+  
+    return date.toLocaleString('en-US', {
+      month: 'short',
+    });
   }
 
   useEffect(() => {
@@ -39,21 +51,32 @@ const ContractDetails = ({contract}) => {
             <p>{contract.price}</p>
             <p>{contract.solarPanels}</p>
             <p>{contract.powerPerPanel}</p>
-            <p>{contract.user}</p>
+            <p>{contract.user.id}</p>
             <p>{contract.createdAt}</p>
           </div>
           <div className='billing'>
             <h3>Billing</h3>
             <div>
-              <p>Tarjetas y demas</p>
+              <p className='name'>{contract.user.firstName} {contract.user.lastName}</p>
+              <p>{contract.billingAccount}</p>
             </div>
           </div>
         </div>
         <div className='bills'>
           <h3>Bills</h3>
           {bills.map(bill => {
+            console.log(bill)
             return (
-              <p>{bill.createdAt}</p>
+              <div className='bill-card'>
+                <div className='left'>
+                  <h4>{toMonthName(bill.createdAt.split('-').slice(1,-1).toString())} {bill.createdAt.slice(0,4)}</h4>
+                  <p>{bill.id}</p>
+                </div>
+                <div className='right'>
+                  <p>{bill.total}€</p>
+                  <MdAssignmentReturned />
+                </div>
+              </div>
             )
           })}
         </div>

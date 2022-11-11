@@ -12,6 +12,7 @@ const INITIAL_VALUES = {
         street: '',
         streetNumber: '',
     },
+    billingAccount: '',
     price: '',
 }
 
@@ -126,6 +127,19 @@ function ContractCreate() {
                     error={errors.powerPerPanel}
                     onBlur={handleBlur}
                 />
+
+                <Input
+                    label="Billing Account"
+                    placeholder="Insert billing account"
+                    name="billingAccount"
+                    id="billingAccount"
+                    value={values.location.billingAccount}
+                    onChange={handleChange}
+                    error={errors.billingAccount}
+                    onBlur={handleBlur}
+                />
+
+
                 <button type="submit" disabled={isSubmitting}>
                     {isSubmitting ? 'Loading' : 'Submit'}
                 </button>

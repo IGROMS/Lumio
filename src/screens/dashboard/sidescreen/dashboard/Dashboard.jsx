@@ -8,6 +8,7 @@ import { getCurrentUser } from '../../../../services/UserService';
 import { getContract, getContracts } from '../../../../services/ContractService';
 import { ProgressBar } from 'react-loader-spinner';
 import { getTickets } from '../../../../services/TicketService';
+import { toast } from 'react-toastify';
 import SoldChart from '../../../../components/dashboard/SoldChart/SoldChart';
 
 const Dashboard = () => {

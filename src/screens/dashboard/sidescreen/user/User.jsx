@@ -31,11 +31,19 @@ const User = () => {
       }, [])
 
     return (
-      <div>
+      <div className='profile'>
         <div>
-            <h1>Bienvenido {user.firstName}</h1>
+            <h1>Welcome {user.firstName}</h1>
         </div>
-        <div className='contract-container-container'>
+        <div className='profile-info'>
+          <h2>My profile</h2>
+          <div className='info'>
+            <p><b>Username:</b> {user.firstName} {user.lastName}</p>
+            <p><b>Email:</b> {user.email}</p>
+          </div>
+        </div>
+        <h2>My Contracts</h2>
+        <div className='profile-contract-container'>
           {contracts.map((contract) => {
             return (
               <Link to={""} className="contract-container" key={contract.id}>

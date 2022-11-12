@@ -81,24 +81,26 @@ const Ticket = ({ticket}) => {
     {close => (
       <div className='modal-container'>
 				<div className='modal'>
-					<h2>Select your contract</h2>				
-        	<form onSubmit={handleSubmit}>
-              <select name='buyingUserContract'
-                onBlur={handleBlur}
-                onChange={handleChange}
-                id="select-contract"
-                defaultValue={'default'}
-              >
-                <option value={'default'} disabled>Choose you contract</option>
-                {options?.map(option => {
-                  return <option key={option.value} value={option.value}> {option.name}</option>
-                })}
-              </select>
-				
-              <button type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? 'Loading' : 'Submit'}
-              </button>
-          </form>
+          <div className='controls'>
+            <h2>Select your contract</h2>				
+            <form onSubmit={handleSubmit} className="contract-select-form">
+                <select name='buyingUserContract'
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  id="select-contract"
+                  defaultValue={'default'}
+                >
+                  <option value={'default'} disabled>Choose you contract</option>
+                  {options?.map(option => {
+                    return <option key={option.value} value={option.value}> {option.name}</option>
+                  })}
+                </select>
+          
+                <button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Loading' : 'Submit'}
+                </button>
+            </form>
+          </div>
           <a className="close" onClick={close}>
           &times;
           </a>

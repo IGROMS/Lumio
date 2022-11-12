@@ -1,5 +1,16 @@
 $sidebar-width: 300px;
 
+
+
+.dashboardContainer {
+    background-color: ghostwhite;
+    height: 100vh;
+}
+
+.dashboard-title {
+    margin: 0 20px 20px;
+}
+
 .full-width{
     width: 100%;
     margin-left: 0;
@@ -25,7 +36,7 @@ $sidebar-width: 300px;
 @media screen and (min-width: 1000px) {
     .dashboardContainer {
         height: 100vh;
-        background-color: rgb(245, 245, 245);
+        background-color: ghostwhite;
     }
     
     #sidebar {
@@ -78,6 +89,7 @@ $sidebar-width: 300px;
 .sidescreen-title {
     display: flex;
     justify-content: space-between;
+    padding-right: 20px
 }
 
 .title-icon {

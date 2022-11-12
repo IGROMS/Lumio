@@ -13,8 +13,8 @@ const NotificationsWidget = () => {
       <Popup 
       trigger={
         notifications.length ?
-        <div className='logo-container empty'><MdNotificationsActive className='logo' onClick={() => setIsOpen(!isOpen)}/></div> :
-        <div className='logo-container'><MdNotificationsNone className='logo' onClick={() => setIsOpen(!isOpen)}/></div>
+        <div className='topbar-logo-container empty'><MdNotificationsActive className='logo' onClick={() => setIsOpen(!isOpen)}/></div> :
+        <div className='topbar-logo-container'><MdNotificationsNone className='logo' onClick={() => setIsOpen(!isOpen)}/></div>
       }
       className={notifications.length ? '' : 'empty'}
       on='hover'

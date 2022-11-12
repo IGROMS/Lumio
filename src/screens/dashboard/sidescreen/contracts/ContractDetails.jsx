@@ -37,6 +37,8 @@ const ContractDetails = ({contract}) => {
       .catch(err => console.error(err))
   }, [contract])
   
+
+
   // console.log('bills', bills[0] ? bills[0].contract.location.street : "");
   return contract ? (
     <div className='contract-container'>
@@ -65,7 +67,33 @@ const ContractDetails = ({contract}) => {
           <h3>Bills</h3>
           <div className='bill-list'>
             {bills.map(bill => {
-              console.log(bill)
+
+              const downloadFile = ({ data, fileName, fileType }) => {
+                // Create a blob with the data we want to download as a file
+                const blob = new Blob([data], { type: fileType })
+                // Create an anchor element and dispatch a click event on it
+                // to trigger a download
+                const a = document.createElement('a')
+                a.download = fileName
+                a.href = window.URL.createObjectURL(blob)
+                const clickEvt = new MouseEvent('click', {
+                  view: window,
+                  bubbles: true,
+                  cancelable: true,
+                })
+                a.dispatchEvent(clickEvt)
+                a.remove()
+              }
+              
+              const exportToJson = e => {
+                e.preventDefault()
+                downloadFile({
+                  data: JSON.stringify(bill),
+                  fileName: `Lumio bill ${bill.createdAt.slice(0, 10)}.json`,
+                  fileType: 'text/json',
+                })
+              }
+
               return (
                 <div className='bill-card'>
                   <div className='left'>
@@ -74,7 +102,7 @@ const ContractDetails = ({contract}) => {
                   </div>
                   <div className='right'>
                     <p>{bill.total}€</p>
-                    <MdAssignmentReturned />
+                    <MdAssignmentReturned onClick={exportToJson}/>
                   </div>
                 </div>
               )

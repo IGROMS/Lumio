@@ -214,7 +214,7 @@ const Dashboard = () => {
             :
               <div className='second-row'>
                 <div className='chart-container'> 
-                <h3>Power sum-up</h3> 
+                <h3 style={{"margin-bottom": "40px"}}>Power sum-up</h3> 
                 <BoughtChart
                     seriesName="Power Bought"
                     data={powerPeerToPeerData}

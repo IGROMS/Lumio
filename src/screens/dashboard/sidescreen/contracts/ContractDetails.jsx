@@ -47,13 +47,22 @@ const ContractDetails = ({contract}) => {
         <div className='contract-info'>
           <div className='details'>
             <h3>Details</h3>
-            <p>{contract.id}</p>
-            <p>{contract.location.postalCode}</p>
-            <p>{contract.price}</p>
-            <p>{contract.solarPanels}</p>
-            <p>{contract.powerPerPanel}</p>
-            <p>{contract.user.id}</p>
-            <p>{contract.createdAt}</p>
+            <p><b>ID:</b> {contract.id}</p>
+            <p><b>Postal code:</b> {contract.location.postalCode}</p>
+            <p><b>Price:</b> {contract.price}€/kWh</p>
+            {contract.solarPanels ?
+              <p><b>Solar panels:</b> {contract.solarPanels}</p>
+             
+            :
+            ""
+            }
+            {contract.solarPanels ?
+              <p><b>Power per panel:</b> {contract.powerPerPanel}</p>
+            :
+            ""
+            }
+            
+            <p><b>Creation date:</b> {contract.createdAt.slice(0, 10)}</p>
           </div>
           <div className='billing'>
             <h3>Billing</h3>

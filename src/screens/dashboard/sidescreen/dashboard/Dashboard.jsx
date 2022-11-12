@@ -15,7 +15,7 @@ import BoughtChart from '../../../../components/dashboard/BoughtChart/BoughtChar
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
-  const toMonthName= (monthNumber) => {
+  const toMonthName = (monthNumber) => {
     const date = new Date();
     date.setMonth(monthNumber - 1);
   

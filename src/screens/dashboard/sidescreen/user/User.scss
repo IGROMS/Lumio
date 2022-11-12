@@ -1,0 +1,30 @@
+.contract-container {
+    background-color: white;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-right: 10px;
+    text-decoration: none;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    transition: .2s ease-in-out;
+    margin-bottom: 20px;
+    max-width: 400px;
+    &:visited {
+      color: #3d3d3d
+    }
+    &:hover {
+      color: #3d3d3d;
+      box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.1);
+      background-color: rgb(223, 237, 255);
+    }
+    &:active {
+      color: #3d3d3d
+    }
+}
+
+.contract-container-container {
+    display: flex;
+    flex-wrap: wrap;
+    
+}

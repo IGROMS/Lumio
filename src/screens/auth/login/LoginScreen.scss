@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ghostwhite;
 
     .card {
       position: absolute;
@@ -13,19 +14,20 @@
       padding: 40px;
       padding-bottom: 76px;
       transform: translate(-50%, -50%);
-      background: rgba(0,0,0,.5);
+      background: white;
       box-sizing: border-box;
-      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
       border-radius: 6px;
 
         h1 {
           margin: 0 0 30px;
           padding: 0;
-          color: #fff;
+          color: #3d3d3d;
           text-align: center;
         }
 
         button{
+          color: white;
           position: absolute;
           font-weight: 600;
           font-size: 1.2rem;
@@ -35,7 +37,7 @@
           width: 40%;
           margin-top: 10px;
           padding: 8px;
-          background-color: aquamarine;
+          background-color: lightseagreen;
           border-radius: 6px;
         }
     }
@@ -46,7 +48,7 @@
       &:focus-within label{
         top: -20px;
             left: 0;
-            color: #03e9f4;
+            color: lightseagreen;
             font-size: 12px;
       }
         label{
@@ -55,7 +57,7 @@
           left: 0;
           padding: 10px 0;
           font-size: 16px;
-          color: #fff;
+          color: #3d3d3d;
           pointer-events: none;
           transition: .5s;
         }
@@ -63,10 +65,10 @@
           width: 100%;
           padding: 10px 0;
           font-size: 16px;
-          color: #fff;
+          color: #3d3d3d;
           margin-bottom: 30px;
           border: none;
-          border-bottom: 1px solid #fff;
+          border-bottom: 1px solid #3d3d3d;
           outline: none;
           background: transparent;
         }
@@ -80,7 +82,7 @@
         .label-valid{
           top: -20px;
             left: 0;
-            color: #03e9f4;
+            color: lightseagreen;
             font-size: 12px;
         }
         
@@ -100,9 +102,9 @@
         padding: 40px;
         padding-bottom: 76px;
         transform: translate(-50%, -50%);
-        background: rgba(0,0,0,.5);
+        background: white;
         box-sizing: border-box;
-        box-shadow: 0 15px 25px rgba(0,0,0,.6);
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
         border-radius: 6px;
     }
   }

@@ -63,21 +63,23 @@ const ContractDetails = ({contract}) => {
         </div>
         <div className='bills'>
           <h3>Bills</h3>
-          {bills.map(bill => {
-            console.log(bill)
-            return (
-              <div className='bill-card'>
-                <div className='left'>
-                  <h4>{toMonthName(bill.createdAt.split('-').slice(1,-1).toString())} {bill.createdAt.slice(0,4)}</h4>
-                  <p>{bill.id}</p>
+          <div className='bill-list'>
+            {bills.map(bill => {
+              console.log(bill)
+              return (
+                <div className='bill-card'>
+                  <div className='left'>
+                    <h4>{toMonthName(bill.createdAt.split('-').slice(1,-1).toString())} {bill.createdAt.slice(0,4)}</h4>
+                    <p>{bill.id}</p>
+                  </div>
+                  <div className='right'>
+                    <p>{bill.total}€</p>
+                    <MdAssignmentReturned />
+                  </div>
                 </div>
-                <div className='right'>
-                  <p>{bill.total}€</p>
-                  <MdAssignmentReturned />
-                </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
       </div>
     </div>

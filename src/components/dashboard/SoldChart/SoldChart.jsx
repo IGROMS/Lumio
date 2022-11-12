@@ -7,7 +7,7 @@ const SoldChart = (props) => {
   const series = [{
     type: "bar",
     name: props.seriesName,
-    data: props.data[0]
+    data: props.data[0].slice(-12)
   }
 ]
 

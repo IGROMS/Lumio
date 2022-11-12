@@ -12,7 +12,6 @@ const ContractDetails = ({contract}) => {
 
   const [ bills, setBills ] = useState([])
   
-  console.log(bills);
 
   const sortFunction = (a , b) => {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()

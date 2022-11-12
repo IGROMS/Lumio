@@ -4,57 +4,22 @@ import './BoughtChart.scss'
 
 const BoughtChart = (props) => {
 
-  const series = [{
-    type: "bar",
-    name: props.seriesName,
-    data: props.data[0]
-  }
-]
-
+  const series = [props.data[0], props.data[1]]
 
   const options = {
     chart: { id: props.chartType,
-      toolbar: {
-        show: false
-      }
+      type: "donut",
     },
-    grid: {
-      show: true,
-      xaxis: {
-          lines: {
-              show: false
-          }
-      },   
-      yaxis: {
-          lines: {
-              show: false
-          }
+    labels: ["Peer to peer", "Power used"],
+    plotOptions: {
+      pie: {
+        donut: {
+          size: '65%'
+        }
       }
     },
     legend: {
-      show: true,
-      onItemClick: {
-        toggleDataSeries: false
-      },
-      onItemHover: {
-          highlightDataSeries: false
-      },
-    },
-    xaxis: {
-      categories: props.xName,
-      labels: {
-        show: true,
-      },
-      tooltip: {
-        enabled: false,
-      }
-
-    },
-    yaxis: {
-      labels: {
-        show: false,
-      },
-      
+      show: false
     }
   }
 

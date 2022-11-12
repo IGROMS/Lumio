@@ -1,4 +1,4 @@
-.login-container {
+.ticket-create {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -11,6 +11,7 @@
       top: 50%;
       left: 50%;
       width: 300px;
+      margin-top: 20px;
       padding: 40px;
       padding-bottom: 76px;
       transform: translate(-50%, -50%);
@@ -40,9 +41,16 @@
           background-color: lightseagreen;
           border-radius: 6px;
         }
+        select {
+          margin-bottom: 20px;
+        }
+        ::-webkit-datetime-edit { color: transparent; }
+        :focus::-webkit-datetime-edit { color: white; }
     }
 
     .form-input {
+
+      
       position: relative;
 
       &:focus-within label{
@@ -71,6 +79,7 @@
           border-bottom: 1px solid #3d3d3d;
           outline: none;
           background: transparent;
+          
         }
         input:-webkit-autofill,
         input:-webkit-autofill:focus {
@@ -79,6 +88,7 @@
         input[data-autocompleted] {
           background-color: transparent !important;
         }
+        
         .label-valid{
           top: -20px;
             left: 0;
@@ -92,13 +102,14 @@
 
 
 
-@media screen and (min-width: 600px) {
-  .login-container{
+@media screen and (min-width: 1000px) {
+  .ticket-create{
     .card {
       position: absolute;
         top: 50%;
         left: 50%;
         width: 400px;
+        margin-top: 0px;
         padding: 40px;
         padding-bottom: 76px;
         transform: translate(-50%, -50%);

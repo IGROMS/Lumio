@@ -13,7 +13,7 @@ import { useSidebarContext } from '../../contexts/SidebarContext';
 import Dashboard from './sidescreen/dashboard/Dashboard';
 
 const DashboardScreen = () => {
-   const { isSidebarOpen } = useSidebarContext();
+  const { isSidebarOpen } = useSidebarContext();
 
   return (
     <div className="dashboardContainer">

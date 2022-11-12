@@ -42,16 +42,18 @@ const Contracts = () => {
   }, [contractSelected])
 
   return contracts ? (
-    <div>
+    <div className='contracts-screen'>
       <div className="sidescreen-title">
         <h2 className='dashboard-title'>My Contracts</h2>
         <Link to={"/contracts/create"}><TbCirclePlus className='title-icon'/></Link>
       </div>
-      <ContractSelect
-          contracts={contracts}
-          contractSelected={contractSelected}
-          setContractSelected={setContractSelected}
-        />
+      <div className='select'>
+        <ContractSelect
+            contracts={contracts}
+            contractSelected={contractSelected}
+            setContractSelected={setContractSelected}
+          />
+      </div>
       <ContractDetails contract={contract} />
     </div>
   ) : (

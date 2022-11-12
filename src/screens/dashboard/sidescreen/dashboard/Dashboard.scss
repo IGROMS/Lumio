@@ -1,8 +1,5 @@
-.dashboard-container {
-  padding: 0 20px;
-}
-
 .dashboard-content {
+  padding: 0 20px;
   .first-row {
     display: flex;
     flex-direction: row;
@@ -13,37 +10,317 @@
         width: 100%;
         min-width: 300px;
         background-color: white;
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
         padding: 0px 26px 0 16px;
+        .dashboard-chart {
+          width: 112%;
+          margin-left: -20px;
+        }
           .title{
             display: flex;
             align-items: center;
             justify-content: space-between;
               .chart-title{
-                text-decoration: underline;
+                text-decoration: none;
               }
               .controls {
                 button {
                   border: none;
                   padding: 6px 20px;
-                  background-color: darkblue;
+                  background-color: lightseagreen;
                   margin-left: 10px;
                   border-radius: 6px;
                   color: white;
+                  font-weight: 500;
                 }
               }
           }
       }
   }
   .second-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    .marketplace-add {
+      background-color: white;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+
+      h3 {
+        padding: 20px 0 0 20px;
+        margin: 0;
+        align-self: flex-start;
+      }
+
+      
+
+    }
+
+    .weather-container {
+      background-color: white;
+      width: 100%;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+      
+      h3{
+        margin: 0;
+        padding: 20px 0 0 20px;
+      }
+
+      div{
+        padding-left: 20px;
+      }
+
+    }
+
+    .chart-container {
+      background-color: white;
+      width:  100%;
+      min-width: 300px;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      h3 {
+        padding: 20px 0 0 20px;
+        margin: 0
+      }
+    }
+
+    
+
+    .peer-to-peer-container {
+      background-color: white;
+      padding: 0;
+      padding-bottom: 5px;
+      width: 100%;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+
+      h3 {
+        padding: 20px;
+        margin: 0;
+      }
+      .ticket-list{
+        margin-top: 20px;
+        margin: 0;
+        padding-bottom: 0;
+        height: auto;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dashboard-ticket-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 10px 0;
+          padding:  0 20px 4px;
+          box-shadow: none;
+          border-radius: none;
+          border-bottom: 1px solid rgb(224, 224, 224);
+          p {
+            margin: 4px 0 0 0;
+          }
+          h4 {
+            
+            margin: 4px 0 0 0;
+          }
+        }
+      }
+      
+    }
   }
 }
 
 
 
-.weather-container {
-  width: 46%;
+.ticket-weather {
+  width:  100%;
+  background-color: white;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  .weather-card {
+    min-width: 300px;
+    border-radius: 0;
+    padding: 20px;
+    margin: 0;
+
+      p {
+       margin: 0 0 5px 0;
+    }
+  }
+  h3 {
+    padding: 20px;
+    padding-bottom:  0;
+    margin: 0;
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  .dashboard-content {
+    padding: 0 20px;
+    .first-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+        .power-used-chart {
+          margin-top: 10px;
+          width: 100%;
+          min-width: 300px;
+          background-color: white;
+          box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+          padding: 0px 26px 0 16px;
+          .dashboard-chart {
+            width: 100%;
+            margin-left: 0px;
+          }
+            .title{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+                .chart-title{
+                  text-decoration: none;
+                }
+                .controls {
+                  button {
+                    border: none;
+                    padding: 6px 20px;
+                    background-color: lightseagreen;
+                    margin-left: 10px;
+                    border-radius: 6px;
+                    color: white;
+                    font-weight: 500;
+                  }
+                }
+            }
+        }
+    }
+    .second-row {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 30px;
+  
+      .marketplace-add {
+        background-color: white;
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom:0;
+        h3 {
+          padding: 20px 0 0 20px;
+          margin: 0;
+          align-self: flex-start;
+        }
+  
+        
+  
+      }
+  
+      .chart-container {
+        background-color: white;
+        width:  48%;
+        min-width: 300px;
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        margin-bottom: 0;
+        h3 {
+          padding: 20px 0 0 20px;
+          margin: 0
+        }
+      }
+  
+      .weather-container {
+        background-color: white;
+        width: 50%;
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        
+        h3{
+          margin: 0;
+        }
+  
+      }
+  
+      .peer-to-peer-container {
+        background-color: white;
+        padding: 20px;
+        padding-bottom: 5px;
+        width: 46%;
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        .ticket-list{
+          margin-top: 0px;
+          margin-bottom: 0;
+          padding-bottom: 0;
+          height: 300px;
+          overflow-y: scroll;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          &::-webkit-scrollbar {
+              display: none;
+          }
+  
+          .dashboard-ticket-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding-bottom: 4px;
+            box-shadow: none;
+            border-radius: none;
+            border-bottom: 1px solid rgb(224, 224, 224);
+            p {
+              margin: 4px 0 0 0;
+            }
+            h4 {
+              margin: 4px 0 0 0;
+            }
+          }
+        }
+        
+        h3{
+          margin: 0
+          
+        }
+        
+      }
+    }
+  }
+  
+  
+  
+  .ticket-weather {
+    width:  48%;
+    margin-bottom: 20px;
+    .weather-container {
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+      
+      h3{
+        margin: 0;
+        padding:0;
+      }
+
+    }
+    .weather-card {
+      background-color: none;
+      box-shadow: none;
+      min-width: none;
+      border-radius: 0;
+      padding: 0;
+      margin: 0;
+  
+        p {
+         margin: 0 0 5px 0;
+      }
+    }
+  }
 }

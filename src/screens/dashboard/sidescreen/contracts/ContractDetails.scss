@@ -1,8 +1,162 @@
-.contract-detail-container {
-  background-color: teal;
+.contract-container {
   height: 100%;
+  margin: 20px;
+  padding-bottom: 26px;
+  h2 {
+    margin: 20px 0 10px 0;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contract-info {
+    width: 100%;
+    padding-top: 0;
+    
+    .details {
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+      border-radius: 6px;
+
+      h3{
+        margin-top: 0;
+      }
+    }
+    .billing {
+      background-color: white;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      margin: 20px 0;
+      padding: 20px;
+      h3{
+        margin-top: 0;
+      }
+      .name {
+        font-size: 1em;
+        font-weight: 500;
+      }
+      p {
+        margin-bottom: 0;
+      } 
+    }
+  }
+
+  .bills {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    .bill-list {
+      overflow-y: scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+          display: none;
+      }
+      height: 340px;
+    }
+    h3 {
+      padding: 20px;
+      margin: 0;
+    }
+
+    .bill-card {
+      display: flex;
+      justify-content: space-between;
+      margin:  4px;
+      padding: 0  10px;
+      border-bottom: 1px solid rgb(205, 205, 205);
+      .left {
+
+      }
+      .right {
+        display: flex;
+        align-items: center;
+        p{
+          margin-right: 10px;
+        }
+      }
+    }
+  }
 }
 
-h2 {
-  margin: 0 auto;
+@media screen and (min-width: 1000px) {
+  .contract-container {
+    height: 100%;
+    margin-left: 20px;
+    padding-bottom: 26px;
+    h2 {
+      margin: 20px 0 10px 0;
+    }
+    .content {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .contract-info {
+      width: 70%;
+      padding-top: 0;
+      
+      .details {
+        padding: 20px;
+        background-color: white;
+        border-radius: 6px;
+
+        h3{
+          margin-top: 0;
+        }
+      }
+      .billing {
+        background-color: white;
+        border-radius: 6px;
+        margin-top: 20px;
+        padding: 20px;
+        margin-bottom:0;
+        h3{
+          margin-top: 0;
+        }
+        .name {
+          font-size: 1em;
+          font-weight: 500;
+        }
+        p {
+          margin-bottom: 0;
+        } 
+      }
+    }
+
+    .bills {
+      padding: 20px;
+      padding-bottom: 0;
+      width: 30%;
+      background-color: white;
+      margin-left: 30px;
+      border-radius: 6px;
+
+      h3 {
+        margin-top: 0;
+      }
+
+      .bill-card {
+        display: flex;
+        justify-content: space-between;
+        margin:  4px;
+        padding: 0  10px;
+        border-bottom: 1px solid rgb(205, 205, 205);
+        .left {
+
+        }
+        .right {
+          display: flex;
+          align-items: center;
+          p{
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
 }
+

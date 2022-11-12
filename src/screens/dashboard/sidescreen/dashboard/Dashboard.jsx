@@ -7,7 +7,12 @@ import ContractSelect from '../../../../components/misc/contract-select/Contract
 import { getCurrentUser } from '../../../../services/UserService';
 import { getContract, getContracts } from '../../../../services/ContractService';
 import { ProgressBar } from 'react-loader-spinner';
+import { getAllTickets } from '../../../../services/TicketService';
 import { getTickets } from '../../../../services/TicketService';
+import { toast } from 'react-toastify';
+import SoldChart from '../../../../components/dashboard/SoldChart/SoldChart';
+import BoughtChart from '../../../../components/dashboard/BoughtChart/BoughtChart';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const toMonthName = (monthNumber) => {
@@ -24,7 +29,9 @@ const Dashboard = () => {
   const [ data, setData ] = useState([])
   const [ chartFilter, setChartFilter ] = useState(-12)
   const [ city, setCity] = useState()
-  const [ tickets, setTickets ] = useState()
+  const [ sellerTickets, setSellerTickets ] = useState()
+  const [ buyerTickets, setBuyerTickets ] = useState()
+  const [ donutData, setDonutData] = useState([])
 
   
   
@@ -64,17 +71,41 @@ const Dashboard = () => {
   }, [chartFilter, contractSelected])
 
   useEffect(() => {
-    getTickets()
+    getAllTickets()
       .then(tickets => {
-        console.log(tickets);
-        console.log("CONTRACT",contractSelected);
-        return tickets.filter(ticket => ticket.sellingUserContract.id === contractSelected)
+        return tickets.filter(ticket => ticket.sellingUserContract._id === contractSelected /* || ticket.buyingUserContract._id === contractSelected */)
       })
       .then(filteredTickets => {
-        setTickets(filteredTickets)
+        setSellerTickets(filteredTickets)
       })
       .catch(err => console.error(err))
   }, [contractSelected]);
+
+  useEffect(() => {
+    getAllTickets()
+      .then(tickets => {
+        console.log(tickets);
+        return tickets.filter(ticket => ticket.buyingUserContract === contractSelected)
+      })
+      .then(filteredTickets => {
+        setBuyerTickets(filteredTickets)
+      })
+      .catch(err => console.error(err))
+  }, [contractSelected]);
+
+
+  useEffect(() => {
+    const powerPeerToPeer = data.map(bill => {
+      return bill.powerPeerToPeer
+    }).filter(data => data)
+  
+    const powerPTPDonut = powerPeerToPeer.reduce((e, b) => e + b, 0)
+    const powerUsedDonut = powerUsed.reduce((e, b) => e + b, 0)
+  
+    const powerPeerToPeerData = [powerPTPDonut, powerUsedDonut-powerPTPDonut]
+    setDonutData(powerPeerToPeerData)
+
+  }, [data])
 
   const powerUsed = data.map(bill => {
     return bill.powerUsed
@@ -88,6 +119,17 @@ const Dashboard = () => {
   }).filter(data => data)
   
   const powerSoldData = [powerSold, []]
+
+  const powerPeerToPeer = data.map(bill => {
+    return bill.powerPeerToPeer
+  }).filter(data => data)
+
+  const powerPTPDonut = powerPeerToPeer.reduce((e, b) => e + b, 0)
+  const powerUsedDonut = powerUsed.reduce((e, b) => e + b, 0)
+
+  
+  const powerPeerToPeerData = [powerPTPDonut, powerUsedDonut-powerPTPDonut]
+  
 
   const chartData = [powerUsed, powerGenerated]
   
@@ -134,30 +176,89 @@ const Dashboard = () => {
             />
           </div>
         </div>
-        {powerSoldData[0].length ?
-          <div className='second-row'>
-            <div className='chart-container'>
-              <DashboardChart
-                seriesName="Power Sold"
-                data={powerSoldData}
-                xName={month}
-                chartType="area"
-                contractSelected={contractSelected}
-                height="300px"
-              />
-            </div>
-            <div className='weather-container'>
-              {tickets?.map(ticket => {
-                return <div key={ticket.id}>ALGO{ticket.id}</div> 
-              })}
+        {powerSoldData[0].length || donutData[0] ?
+          <div className='is-ticket'>
+            {powerSoldData[0].length ?
+              <div className='second-row'>
+                <div className='chart-container'>
+                  <h3>Sold power</h3>
+                
+                  <SoldChart
+                    seriesName="Power Sold"
+                    data={powerSoldData}
+                    xName={month}
+                    chartType="area"
+                    contractSelected={contractSelected}
+                    height="300px"
+                  />
+                  
+                </div>
+                <div className='peer-to-peer-container'>
+                  <h3>My tickets</h3>
+                  <div className='ticket-list'>
+                    {sellerTickets?.map(ticket => {
+                      return <div key={ticket.id} to={""} className="dashboard-ticket-container">
+                              <div>
+                                <div className='dashboard-ticket-selling-user'><h4>{ticket.buyingUser.firstName} {ticket.sellingUser.lastName}</h4></div>
+                                <h4>{ticket.startDate?.toString().substring(0, 10)} &#x2192; {ticket.endDate?.toString().substring(0, 10)}</h4>
+                              </div>
+                              <div className='dashboard-ticket-info'>
+                                <p>{ticket.quantity} kWh</p>
+                                <p>{ticket.price}€/kWh</p>
+                              </div>
+                            </div>
+                    })}
+                  </div>
+                </div>
+              </div>
+            :
+              <div className='second-row'>
+                <div className='chart-container'> 
+                <h3 style={{"margin-bottom": "40px"}}>Power sum-up</h3> 
+                <BoughtChart
+                    seriesName="Power Bought"
+                    data={powerPeerToPeerData}
+                    xName={month}
+                    chartType="donut"
+                    contractSelected={contractSelected}
+                    height="260px"
+                  />
+                </div>
+                <div className='peer-to-peer-container'>
+                  <h3>My tickets</h3>
+                  <div className='ticket-list'>
+                    {buyerTickets?.map(ticket => {
+                      return<div key={ticket.id} to={""} className="dashboard-ticket-container">
+                              <div>
+                                <div className='dashboard-ticket-selling-user'><h4>{ticket.sellingUser.firstName} {ticket.sellingUser.lastName}</h4></div>
+                                <h4>{ticket.startDate?.toString().substring(0, 10)} &#x2192; {ticket.endDate?.toString().substring(0, 10)}</h4>
+                              </div>
+                              <div className='dashboard-ticket-info'>
+                                <p>{ticket.quantity} kWh</p>
+                                <p>{ticket.price}€/kWh</p>
+                              </div>
+                            </div> 
+                    })}
+                  </div>
+                </div>
+              </div>
+            }
+            <div className='ticket-weather'>
+              <div className='weather-container'>
+                <h3>Weather conditions</h3>
+                <WeatherWidget city={city} contractSelected={contractSelected}/>
+              </div>
             </div>
           </div>
+          
         :
           <div className='second-row'>
-            <div>
-              Take a look at our marketplace!
+            <div className='marketplace-add'>
+              <h3>Take a look at our marketplace!</h3>
+              <Link to="/market"><img alt="" src="marketplace.png"/></Link>
             </div>
             <div className='weather-container'>
+              <h3>Weather conditions</h3>
               <WeatherWidget city={city} contractSelected={contractSelected}/>
             </div>
           </div>

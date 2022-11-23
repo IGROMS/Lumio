@@ -20,7 +20,7 @@ const WeatherWidget = ({city}) => {
 							transition: Flip,
 							draggablePercent: 60,
 							icon: "☁️",
-							autoClose: 10000,
+							autoClose: 3000,
 						})
 					}
 				}

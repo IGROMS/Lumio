@@ -76,6 +76,7 @@ const Dashboard = () => {
         return tickets.filter(ticket => ticket.sellingUserContract._id === contractSelected /* || ticket.buyingUserContract._id === contractSelected */)
       })
       .then(filteredTickets => {
+        console.log("sellerTickets", filteredTickets);
         setSellerTickets(filteredTickets)
       })
       .catch(err => console.error(err))
@@ -84,7 +85,7 @@ const Dashboard = () => {
   useEffect(() => {
     getAllTickets()
       .then(tickets => {
-        console.log(tickets);
+        
         return tickets.filter(ticket => ticket.buyingUserContract === contractSelected)
       })
       .then(filteredTickets => {
@@ -199,7 +200,7 @@ const Dashboard = () => {
                     {sellerTickets?.map(ticket => {
                       return <div key={ticket.id} to={""} className="dashboard-ticket-container">
                               <div>
-                                <div className='dashboard-ticket-selling-user'><h4>{ticket.buyingUser.firstName} {ticket.sellingUser.lastName}</h4></div>
+                                <div className='dashboard-ticket-selling-user'><h4>{ticket.buyingUser?.firstName} {ticket.sellingUser.lastName}</h4></div>
                                 <h4>{ticket.startDate?.toString().substring(0, 10)} &#x2192; {ticket.endDate?.toString().substring(0, 10)}</h4>
                               </div>
                               <div className='dashboard-ticket-info'>
@@ -230,7 +231,7 @@ const Dashboard = () => {
                     {buyerTickets?.map(ticket => {
                       return<div key={ticket.id} to={""} className="dashboard-ticket-container">
                               <div>
-                                <div className='dashboard-ticket-selling-user'><h4>{ticket.sellingUser.firstName} {ticket.sellingUser.lastName}</h4></div>
+                                <div className='dashboard-ticket-selling-user'><h4>{ticket?.sellingUser.firstName} {ticket.sellingUser.lastName}</h4></div>
                                 <h4>{ticket.startDate?.toString().substring(0, 10)} &#x2192; {ticket.endDate?.toString().substring(0, 10)}</h4>
                               </div>
                               <div className='dashboard-ticket-info'>

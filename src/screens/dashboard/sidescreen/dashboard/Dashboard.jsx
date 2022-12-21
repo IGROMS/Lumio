@@ -75,6 +75,9 @@ const Dashboard = () => {
       .then(tickets => {
         return tickets.filter(ticket => ticket.sellingUserContract._id === contractSelected /* || ticket.buyingUserContract._id === contractSelected */)
       })
+      .then(firstFilter => {
+        return firstFilter.filter(ticket => ticket.buyingUser)
+      })
       .then(filteredTickets => {
         console.log("sellerTickets", filteredTickets);
         setSellerTickets(filteredTickets)
@@ -200,7 +203,7 @@ const Dashboard = () => {
                     {sellerTickets?.map(ticket => {
                       return <div key={ticket.id} to={""} className="dashboard-ticket-container">
                               <div>
-                                <div className='dashboard-ticket-selling-user'><h4>{ticket.buyingUser?.firstName} {ticket.sellingUser.lastName}</h4></div>
+                                <div className='dashboard-ticket-selling-user'><h4>{ticket.buyingUser?.firstName} {ticket.buyingUser?.lastName}</h4></div>
                                 <h4>{ticket.startDate?.toString().substring(0, 10)} &#x2192; {ticket.endDate?.toString().substring(0, 10)}</h4>
                               </div>
                               <div className='dashboard-ticket-info'>

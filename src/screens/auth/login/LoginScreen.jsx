@@ -12,8 +12,8 @@ function Login() {
   const { login } = useContext(AuthContext)
 
   const INITIAL_VALUES = {
-    email: (state && state.email) || '',
-    password: ''
+    email: (state && state.email) || 'tito@perez.com',
+    password: '12345678'
   }
 
   const {
